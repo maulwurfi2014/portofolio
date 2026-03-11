@@ -4,37 +4,108 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Roblox Scripter Portfolio</title>
+
 <style>
-body{font-family:Arial, sans-serif;margin:0;background:#0f172a;color:white}
-header{padding:40px;text-align:center;background:#1e293b}
-section{padding:40px;max-width:900px;margin:auto}
+body{
+font-family:Arial, sans-serif;
+margin:0;
+background:#0f172a;
+color:white;
+}
+
+header{
+padding:40px;
+text-align:center;
+background:#1e293b;
+}
+
+section{
+padding:40px;
+max-width:900px;
+margin:auto;
+}
+
 h1{margin-bottom:10px}
 h2{margin-top:40px;margin-bottom:10px}
-.card{background:#1e293b;padding:20px;border-radius:10px;margin-top:20px}
-.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:20px}
-.project-card{background:#1e293b;padding:20px;border-radius:10px;transition:transform .2s}
-.project-card:hover{transform:translateY(-5px)}
-img{max-width:100%;border-radius:10px}
-.button{display:inline-block;margin-top:15px;padding:12px 20px;background:#3b82f6;color:white;text-decoration:none;border-radius:8px}
-footer{text-align:center;padding:20px;background:#1e293b;margin-top:40px}
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+margin-top:20px;
+}
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+.project-card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+transition:transform .2s;
+}
+
+.project-card:hover{
+transform:translateY(-5px);
+}
+
+img{
+max-width:100%;
+border-radius:10px;
+}
+
+.button{
+display:inline-block;
+margin-top:15px;
+padding:12px 20px;
+background:#3b82f6;
+color:white;
+text-decoration:none;
+border-radius:8px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#1e293b;
+margin-top:40px;
+}
 </style>
 </head>
+
 <body>
+
 <header>
 <h1>Roblox Studio Scripter</h1>
 <p>4 Years of Experience in Roblox Studio Scripting</p>
 </header>
+
 <section>
+
 <h2>About Me</h2>
 <div class="card">
-<p>Im a Roblox Studio Lua Scripter with over 4 years of experience and made a lot of projects in the past like Tower Defense Games , Sandbox Games and more.</p>
+<p>
+Im a Roblox Studio Lua Scripter with over 4 years of experience and made a lot of projects in the past like Tower Defense Games, Sandbox Games and more.
+</p>
 </div>
 
 <h2>My Roblox Profile</h2>
 <div class="card" style="text-align:center">
-<img src="https://tr.rbxcdn.com/1917755988/420/420/Avatar/Png" style="width:220px;margin-bottom:15px;">
+
+<img id="robloxAvatar" style="width:220px;margin-bottom:15px;">
+
 <p>Check out my Roblox account:</p>
-<a class="button" href="https://www.roblox.com/users/1917755988/profile" target="_blank">View Roblox Profile</a>
+
+<a class="button"
+href="https://www.roblox.com/users/1917755988/profile"
+target="_blank">
+View Roblox Profile
+</a>
+
 </div>
 
 <h2>Skills</h2>
@@ -48,38 +119,58 @@ footer{text-align:center;padding:20px;background:#1e293b;margin-top:40px}
 </div>
 
 <h2>Projects</h2>
+
 <div class="projects">
 
 <div class="project-card">
 <h3>Tower Defense Game</h3>
-<p>I am currently working on a cool Tower Defense Game with my friend. Join the Discord Server for updates and playtests!</p>
-<img src="acool-tower-defense-logo.png" alt="A Cool Tower Defense Logo" style="max-width:300px;display:block;margin:auto;">
-<a class="button" href="https://discord.gg/pDeVvgCp" target="_blank">Discord</a>
+<p>
+I am currently working on a cool Tower Defense Game with my friend.
+Join the Discord Server for updates and playtests!
+</p>
+
+<img src="acool-tower-defense-logo.png">
+
+<a class="button"
+href="https://discord.gg/pDeVvgCp"
+target="_blank">
+Discord
+</a>
 </div>
 
 <div class="project-card">
 <h3>Sandbox Game</h3>
-<p>A sandbox game inspired by Sandboxels where players can experiment with different elements and mechanics.</p>
+<p>
+A sandbox game inspired by Sandboxels where players can experiment
+with elements and mechanics.
+</p>
 </div>
 
 </div>
 
 </section>
+
 <footer>
 <p>© 2026 Roblox Scripter Portfolio</p>
 </footer>
+
 <script>
-async function loadAvatar(){
-  try{
-    const res = await fetch("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=1917755988&size=420x420&format=Png&isCircular=false");
-    const data = await res.json();
-    const img = data.data[0].imageUrl;
-    document.getElementById("robloxAvatar").src = img;
-  }catch(e){
-    console.log("Avatar failed to load",e);
+async function loadAvatar() {
+  try {
+    const response = await fetch("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=1917755988&size=420x420&format=Png&isCircular=false");
+    const data = await response.json();
+
+    if (data && data.data && data.data.length > 0) {
+      const avatarUrl = data.data[0].imageUrl;
+      document.getElementById("robloxAvatar").src = avatarUrl;
+    }
+  } catch (error) {
+    console.log("Avatar failed to load", error);
   }
 }
+
 loadAvatar();
 </script>
+
 </body>
 </html>
